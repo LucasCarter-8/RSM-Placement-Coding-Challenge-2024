@@ -11,6 +11,7 @@ namespace SubscriptionServiceManagementSystem
         private string serviceName;
         private float servicePrice;
         private List<Film> availableFilms= new List<Film>();
+        private List<TVShow> availableShows = new List<TVShow>();
         public StreamingService(string name, float price) 
         {
             this.serviceName = name;
@@ -49,6 +50,37 @@ namespace SubscriptionServiceManagementSystem
             }
         }
 
+        public void AddShow(TVShow addedShow)
+        {
+            if (!this.ContainsShow(addedShow))
+            {
+                Console.WriteLine("Show Added");
+                availableShows.Add(addedShow);
+            }
+            else
+            {
+                Console.WriteLine("Show is already on this streaming service");
+            }
+        }
+        public void RemoveShow(TVShow removeShow)
+        {
+            foreach (TVShow show in availableShows)
+            {
+                if (removeShow.CompareTo(show) == 0)
+                {
+                    availableShows.Remove(show);
+                }
+            }
+        }
+
+        public void PrintAvailableShows()
+        {
+            foreach (TVShow show in availableShows)
+            {
+                Console.WriteLine(show.ToString());
+            }
+        }
+
         public int CompareTo(StreamingService other)
         {
             return this.serviceName.CompareTo(other.serviceName);
@@ -67,6 +99,20 @@ namespace SubscriptionServiceManagementSystem
             return false;
         }
 
+        public bool ContainsShow(TVShow checkShow)
+        {
+            foreach (TVShow show in availableShows)
+            {
+                if (checkShow.CompareTo(show) == 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
         public void SetFilmRating(Film filmToRate, int rating)
         {
             foreach (Film film in availableFilms)
@@ -74,6 +120,17 @@ namespace SubscriptionServiceManagementSystem
                 if (filmToRate.CompareTo(film) == 0)
                 {
                     film.SetRating(rating);
+                }
+            }
+        }
+
+        public void SetShowRating(TVShow showToRate, int rating)
+        {
+            foreach (TVShow show in availableShows)
+            {
+                if (showToRate.CompareTo(show) == 0)
+                {
+                    show.SetRating(rating);
                 }
             }
         }

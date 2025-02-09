@@ -92,7 +92,7 @@ namespace SubscriptionServiceManagementSystem
                         StreamingService tempService3 = new StreamingService(Console.ReadLine(), 0);
                         Console.WriteLine("Enter Details of Film to rate in this format (Name Year):");
                         string[] filmDetailsToRate = Console.ReadLine().Split(' ');
-                        Console.WriteLine("Enter Rating: ");
+                        Console.WriteLine("Enter Rating (1-5): ");
                         int rating = int.Parse(Console.ReadLine());
                         foreach (StreamingService service in subscribedServices)
                         {

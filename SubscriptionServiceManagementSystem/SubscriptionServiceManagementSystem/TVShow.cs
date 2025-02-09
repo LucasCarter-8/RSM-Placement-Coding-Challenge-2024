@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace SubscriptionServiceManagementSystem
 {
-    class Film : IComparable<Film>
+    class TVShow
     {
         private string showName;
-        private int yearOfRelease;
         private string genre;
         private int rating;
-        private float runtime;
-        public Film(string showName, int year, string genre, float runtime) 
+        private List<Season> seasons = new List<Season>();
+    
+        public TVShow(string showName, string genre, float runtime)
         {
             this.showName = showName;
-            this.yearOfRelease = year;             
             this.genre = genre;
-            this.runtime = runtime;
 
             //default set rating
             this.rating = 0;
@@ -26,7 +24,7 @@ namespace SubscriptionServiceManagementSystem
 
         public void SetRating(int rating)
         {
-            if(rating < 0 || rating > 5)
+            if (rating < 0 || rating > 5)
             {
                 Console.WriteLine("Invalid rating");
             }
@@ -34,25 +32,17 @@ namespace SubscriptionServiceManagementSystem
             {
                 this.rating = rating;
             }
-        
+
         }
 
-        public int CompareTo(Film other)
+        public int CompareTo(TVShow other)
         {
-            if (this.showName == other.showName && this.yearOfRelease == other.yearOfRelease)
-            {
-                return 0;
-            }
-            else
-            {
-                return -1;
-            }
-
+            return this.showName.CompareTo(other.showName);
         }
 
         public override string ToString()
         {
-            return $"Name: {this.showName}, Year: {this.yearOfRelease}, Genre: {this.genre}, Rating: {this.rating}, Runtime: {this.runtime}";
+            return $"Name: {this.showName}, Genre: {this.genre}, Rating: {this.rating}, Number of seasons available: {this.seasons.Count}";
         }
     }
 }

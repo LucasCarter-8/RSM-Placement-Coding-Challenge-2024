@@ -6,7 +6,27 @@ using System.Threading.Tasks;
 
 namespace SubscriptionServiceManagementSystem
 {
-    internal class Film
+    class Film
     {
+        private string filmName;
+        private int yearOfRelease;
+        private string genre;
+        private int rating;
+        private float runtime;
+        public Film(string filmName, int year, string genre, float runtime) 
+        {
+            this.filmName = filmName;
+            this.yearOfRelease = year;             
+            this.genre = genre;
+            this.runtime = runtime;
+
+            //default set rating
+            this.rating = 0;
+        }
+
+        public void SetRating(int rating)
+        {
+            this.rating = rating;
+        }
     }
 }

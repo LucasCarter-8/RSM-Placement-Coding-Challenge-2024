@@ -41,5 +41,10 @@ namespace SubscriptionServiceManagementSystem
             }
 
         }
+
+        public override string ToString()
+        {
+            return $"Name: {this.filmName}, Year: {this.yearOfRelease}, Genre: {this.genre}, Rating: {this.rating}, Runtime: {this.runtime}";
+        }
     }
 }

@@ -52,15 +52,8 @@ namespace SubscriptionServiceManagementSystem
 
         public void AddShow(TVShow addedShow)
         {
-            if (!this.ContainsShow(addedShow))
-            {
-                Console.WriteLine("Show Added");
-                availableShows.Add(addedShow);
-            }
-            else
-            {
-                Console.WriteLine("Show is already on this streaming service");
-            }
+            Console.WriteLine("Show Added");
+            availableShows.Add(addedShow);
         }
         public void RemoveShow(TVShow removeShow)
         {
@@ -99,11 +92,11 @@ namespace SubscriptionServiceManagementSystem
             return false;
         }
 
-        public bool ContainsShow(TVShow checkShow)
+        public bool ContainsSeason(TVShow checkShow)
         {
             foreach (TVShow show in availableShows)
             {
-                if (checkShow.CompareTo(show) == 0)
+                if (checkShow.CompareTo(show) == 5)
                 {
                     return true;
                 }

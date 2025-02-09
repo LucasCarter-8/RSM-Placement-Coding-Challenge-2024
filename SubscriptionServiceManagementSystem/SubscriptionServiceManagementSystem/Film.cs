@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SubscriptionServiceManagementSystem
 {
-    class Film
+    class Film : IComparable<Film>
     {
         private string filmName;
         private int yearOfRelease;
@@ -27,6 +27,19 @@ namespace SubscriptionServiceManagementSystem
         public void SetRating(int rating)
         {
             this.rating = rating;
+        }
+
+        public int CompareTo(Film other)
+        {
+            if (this.filmName == other.filmName && this.yearOfRelease == other.yearOfRelease)
+            {
+                return 0;
+            }
+            else
+            {
+                return -1;
+            }
+
         }
     }
 }
